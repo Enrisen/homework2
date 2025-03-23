@@ -88,3 +88,10 @@ func (app *application) feedbackSuccess(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 }
+
+func (app *application) feedbackForm(w http.ResponseWriter, r *http.Request) {
+	data := NewTemplateData()
+	data.Title = "Feedback"
+	data.HeaderText = "Share Your Thoughts"
+	app.render(w, http.StatusOK, "feedback.tmpl", data)
+}
