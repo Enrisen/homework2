@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <textarea id="content" name="content" placeholder="Write your journal entry here..."
-                          class="{{if .FormErrors.content}}invalid{{end}}">{{index .FormData "content"}}</textarea>
+                          class="{{if .FormErrors.content}}invalid{{end}}"> {{index .FormData "content"}} </textarea>
                 {{with .FormErrors.content}}
                     <div class="error">{{.}}</div>
                 {{end}}

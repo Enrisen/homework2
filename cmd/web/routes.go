@@ -12,6 +12,8 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("GET /feedback", app.feedbackForm)
 	mux.HandleFunc("POST /feedback/new", app.createFeedback)
 	mux.HandleFunc("GET /feedback/success", app.feedbackSuccess)
+	mux.HandleFunc("GET /journal", app.journalForm)
+	mux.HandleFunc("POST /journal/new", app.createJournal)
 
 	return app.loggingMiddleware(mux)
 }
