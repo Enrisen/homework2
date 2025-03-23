@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>{{.HeaderText}}</h1>
+
+        <form action="/journal/new" method="POST">
+            <div class="form-group">
+                <input type="text" id="title" name="title" placeholder="Journal Entry Title" value="{{index .FormData "title"}}"
+                       class="{{if .FormErrors.title}}invalid{{end}}">
+                {{with .FormErrors.title}}
+                    <div class="error">{{.}}</div>
+                {{end}}
+            </div>
+
+            <div class="form-group">
+                <textarea id="content" name="content" placeholder="Write your journal entry here..."
+                          class="{{if .FormErrors.content}}invalid{{end}}">{{index .FormData "content"}}</textarea>
+                {{with .FormErrors.content}}
+                    <div class="error">{{.}}</div>
+                {{end}}
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="date" name="date" value="{{index .FormData "date"}}"
+                       class="{{if .FormErrors.date}}invalid{{end}}">
+                {{with .FormErrors.date}}
+                    <div class="error">{{.}}</div>
+                {{end}}
+            </div>
+
+            <button type="submit">Submit Journal Entry</button>
+        </form>
+    </div>
+</body>
+</html>

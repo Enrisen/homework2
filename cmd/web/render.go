@@ -25,7 +25,6 @@ func (app *application) render(w http.ResponseWriter, status int, page string, d
 		return err
 	}
 	err := ts.Execute(buf, data)
-
 	if err != nil {
 		err = fmt.Errorf("failed to render template %s: %w", page, err)
 		app.logger.Error("failed to render template", "template", page, "error", err)
@@ -33,6 +32,7 @@ func (app *application) render(w http.ResponseWriter, status int, page string, d
 	}
 
 	w.WriteHeader(status)
+
 	_, err = buf.WriteTo(w)
 	if err != nil {
 		err = fmt.Errorf("failed to write template to response: %w", err)

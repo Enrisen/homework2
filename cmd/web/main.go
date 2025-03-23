@@ -9,12 +9,14 @@ import (
 	"os"
 	"time"
 
+	"github.com/cohune-cabbage/di/internal/data"
 	_ "github.com/lib/pq"
 )
 
 type application struct {
-	addr          *string
 	logger        *slog.Logger
+	addr          *string
+	feedback      *data.FeedbackModel
 	templateCache map[string]*template.Template
 }
 
@@ -30,19 +32,19 @@ func main() {
 		logger.Error(err.Error())
 		os.Exit(1)
 	}
-
 	logger.Info("database connection pool established")
+
 	templateCache, err := newTemplateCache()
 	if err != nil {
 		logger.Error(err.Error())
 		os.Exit(1)
 	}
-
 	defer db.Close()
 
 	app := &application{
-		addr:          addr,
 		logger:        logger,
+		addr:          addr,
+		feedback:      &data.FeedbackModel{DB: db},
 		templateCache: templateCache,
 	}
 
@@ -54,19 +56,22 @@ func main() {
 }
 
 func openDB(dsn string) (*sql.DB, error) {
+	// open a connection pool
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
 		return nil, err
 	}
 
+	// set a context to ensure DB operations don't take too long
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-
 	err = db.PingContext(ctx)
 	if err != nil {
 		db.Close()
 		return nil, err
 	}
 
+	// return the connection pool (sql.DB)
 	return db, nil
+
 }

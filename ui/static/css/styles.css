@@ -93,3 +93,17 @@ button:hover {
   color: #2ecc71;
   margin-bottom: 1rem;
 }
+
+.error {
+  color: #d84949;
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+input.invalid,
+textarea.invalid {
+  border: 1px solid #d84949;
+  background-color: #fff0f0;
+}
