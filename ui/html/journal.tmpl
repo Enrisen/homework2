@@ -4,38 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/journal.css">
 </head>
 <body>
-    <div class="form-container">
+    <div class="nav-container">
+        <h1>Journal Entries</h1>
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+                <li><a href="/journal"><i class="fas fa-book"></i> Journal</a></li>
+                <li><a href="/todos"><i class="fas fa-tasks"></i> Todo List</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="journal-container">
         <h1>{{.HeaderText}}</h1>
 
         <form action="/journal/new" method="POST">
-            <div class="form-group">
+            <div class="journal-form-group">
+                <label for="title">Entry Title</label>
                 <input type="text" id="title" name="title" placeholder="Journal Entry Title" value="{{index .FormData "title"}}"
                        class="{{if .FormErrors.title}}invalid{{end}}">
+                <i class="fas fa-heading"></i>
                 {{with .FormErrors.title}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <div class="form-group">
+            <div class="journal-form-group">
+                <label for="content">Your Thoughts</label>
                 <textarea id="content" name="content" placeholder="Write your journal entry here..."
+<<<<<<< HEAD
                           class="{{if .FormErrors.content}}invalid{{end}}"> {{index .FormData "content"}} </textarea>
+=======
+                          class="{{if .FormErrors.content}}invalid{{end}}">{{index .FormData "content"}}</textarea>
+                <i class="fas fa-pen-fancy"></i>
+>>>>>>> 4be8292 (Added the todo page and styled it. Still need better styling.)
                 {{with .FormErrors.content}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <div class="form-group">
+            <div class="journal-form-group">
+                <label for="date">Date</label>
                 <input type="date" id="date" name="date" value="{{index .FormData "date"}}"
                        class="{{if .FormErrors.date}}invalid{{end}}">
+                <i class="fas fa-calendar-alt"></i>
                 {{with .FormErrors.date}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <button type="submit">Submit Journal Entry</button>
+            <button type="submit" class="journal-submit-btn"><i class="fas fa-book"></i> Save Journal Entry</button>
         </form>
     </div>
 </body>

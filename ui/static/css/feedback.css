@@ -1,0 +1,158 @@
+/* Feedback Form Specific Styles */
+
+.feedback-form-container {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feedback-form-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.feedback-form-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
+.feedback-form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.feedback-form-group input,
+.feedback-form-group textarea {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: var(--transition);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.feedback-form-group i {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: var(--secondary-color);
+  transition: var(--transition);
+}
+
+.feedback-form-group input:focus,
+.feedback-form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(109, 93, 252, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.feedback-form-group input:focus + i,
+.feedback-form-group textarea:focus + i {
+  color: var(--primary-color);
+}
+
+.feedback-form-group textarea {
+  min-height: 180px;
+  padding-top: 15px;
+}
+
+.feedback-submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.feedback-submit-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-success {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feedback-success i {
+  font-size: 4rem;
+  color: var(--success-color);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.feedback-success h2 {
+  color: var(--success-color);
+  margin-bottom: 15px;
+}
+
+.feedback-success p {
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+.feedback-success .back-btn {
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: var(--border-radius);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.feedback-success .back-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feedback-form-container {
+    padding: 20px;
+  }
+
+  .feedback-form-group input,
+  .feedback-form-group textarea {
+    padding-left: 40px;
+  }
+
+  .feedback-success {
+    padding: 30px 20px;
+  }
+}

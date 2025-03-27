@@ -17,7 +17,12 @@ type application struct {
 	logger        *slog.Logger
 	addr          *string
 	feedback      *data.FeedbackModel
+<<<<<<< HEAD
 	journal       *data.JournalModel
+=======
+	journal       *data.JournalModel // Add JournalModel
+	todos         *data.TodoModel    // Add TodoModel
+>>>>>>> 4be8292 (Added the todo page and styled it. Still need better styling.)
 	templateCache map[string]*template.Template
 }
 
@@ -46,7 +51,12 @@ func main() {
 		logger:        logger,
 		addr:          addr,
 		feedback:      &data.FeedbackModel{DB: db},
+<<<<<<< HEAD
 		journal:       &data.JournalModel{DB: db},
+=======
+		journal:       &data.JournalModel{DB: db}, // Initialize JournalModel
+		todos:         &data.TodoModel{DB: db},    // Initialize TodoModel
+>>>>>>> 4be8292 (Added the todo page and styled it. Still need better styling.)
 		templateCache: templateCache,
 	}
 

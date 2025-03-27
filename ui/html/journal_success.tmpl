@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/journal.css">
 </head>
 <body>
-    <header>
-        <h1>{{.HeaderText}}</h1>
-    </header>
-    <main>
-        <div class="success-message">
-            <h2>Journal Entry Submitted!</h2>
-            <p>Your journal entry has been successfully saved.</p>
-            <a href="/journal" class="button">Create Another Entry</a>
+    <div class="nav-container">
+        <h1>Journal Entry Submitted</h1>
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+                <li><a href="/journal"><i class="fas fa-book"></i> Journal</a></li>
+                <li><a href="/todos"><i class="fas fa-tasks"></i> Todo List</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="journal-success">
+        <i class="fas fa-check-circle"></i>
+        <h2>Journal Entry Submitted!</h2>
+        <p>Your journal entry has been successfully saved to your personal journal.</p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <a href="/journal" class="back-btn"><i class="fas fa-plus-circle"></i> Create Another Entry</a>
+            <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
         </div>
-    </main>
-    <footer>
-    </footer>
+    </div>
 </body>
 </html>

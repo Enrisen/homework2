@@ -4,48 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/feedback.css">
 </head>
 <body>
-    <div class="form-container">
+    <div class="nav-container">
+        <h1>Feedback Form</h1>
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+                <li><a href="/journal"><i class="fas fa-book"></i> Journal</a></li>
+                <li><a href="/todos"><i class="fas fa-tasks"></i> Todo List</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="feedback-form-container">
         <h1>{{.HeaderText}}</h1>
 
         <form action="/feedback/new" method="POST">
-            <div class="form-group">
+            <div class="feedback-form-group">
                 <input type="text" id="name" name="name" placeholder="Enter your full name" value="{{index .FormData "name"}}"
                        class="{{if .FormErrors.fullname}}invalid{{end}}">
+                <i class="fas fa-user"></i>
                 {{with .FormErrors.fullname}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <div class="form-group">
+            <div class="feedback-form-group">
                 <input type="email" id="email" name="email" placeholder="your.email@example.com"
                        value="{{index .FormData "email"}}"
                        class="{{if .FormErrors.email}}invalid{{end}}">
+                <i class="fas fa-envelope"></i>
                 {{with .FormErrors.email}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <div class="form-group">
+            <div class="feedback-form-group">
                 <input type="text" id="subject" name="subject" placeholder="Brief subject of your message"
                        value="{{index .FormData "subject"}}"
                        class="{{if .FormErrors.subject}}invalid{{end}}">
+                <i class="fas fa-heading"></i>
                 {{with .FormErrors.subject}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <div class="form-group">
+            <div class="feedback-form-group">
                 <textarea id="message" name="message" placeholder="Your detailed feedback or inquiry"
                           class="{{if .FormErrors.message}}invalid{{end}}">{{index .FormData "message"}}</textarea>
+                <i class="fas fa-comment"></i>
                 {{with .FormErrors.message}}
                     <div class="error">{{.}}</div>
                 {{end}}
             </div>
 
-            <button type="submit">Submit Feedback</button>
+            <button type="submit" class="feedback-submit-btn"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
         </form>
     </div>
 </body>

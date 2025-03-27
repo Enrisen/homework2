@@ -42,3 +42,19 @@ func (app *application) render(w http.ResponseWriter, status int, page string, d
 
 	return nil
 }
+
+// serverError logs the detailed error message and sends a generic 500 Internal Server Error response to the client.
+func (app *application) serverError(w http.ResponseWriter, r *http.Request, err error) {
+	app.logger.Error(err.Error(), "url", r.URL.Path, "method", r.Method)
+	http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+}
+
+// clientError sends a specific status code and corresponding description to the client.
+func (app *application) clientError(w http.ResponseWriter, status int) {
+	http.Error(w, http.StatusText(status), status)
+}
+
+// notFound sends a 404 Not Found response to the client.
+func (app *application) notFound(w http.ResponseWriter, r *http.Request) {
+	app.clientError(w, http.StatusNotFound)
+}

@@ -4,17 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="nav-container">
         <h1>{{.HeaderText}}</h1>
         <nav>
             <ul>
+<<<<<<< HEAD
                 <li><a href="/feedback">Feedback</a></li>
                 <li><a href="/journal">Journal</a></li>
+=======
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+                <li><a href="/journal"><i class="fas fa-book"></i> Journal</a></li>
+                <li><a href="/todos"><i class="fas fa-tasks"></i> Todo List</a></li>
+>>>>>>> 4be8292 (Added the todo page and styled it. Still need better styling.)
             </ul>
         </nav>
+    </div>
+
+    <div class="container">
+        <div class="card-container">
+            <!-- Feedback Card -->
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-comment-dots"></i>
+                </div>
+                <h2 class="card-title">Feedback</h2>
+                <p class="card-description">
+                    Share your thoughts, suggestions, or report issues. Your feedback helps us improve our services and provide a better experience.
+                </p>
+                <a href="/feedback" class="card-link">Share Feedback</a>
+            </div>
+
+            <!-- Journal Card -->
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h2 class="card-title">Journal</h2>
+                <p class="card-description">
+                    Keep track of your thoughts, experiences, and reflections. Our journal feature helps you document your journey.
+                </p>
+                <a href="/journal" class="card-link">Write in Journal</a>
+            </div>
+
+            <!-- Todo List Card -->
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h2 class="card-title">Todo List</h2>
+                <p class="card-description">
+                    Stay organized and manage your tasks efficiently. Create, track, and complete your to-do items all in one place.
+                </p>
+                <a href="/todos" class="card-link">Manage Tasks</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

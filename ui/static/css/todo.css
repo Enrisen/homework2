@@ -1,0 +1,330 @@
+/* Todo List Specific Styles */
+
+.todo-container {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.todo-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.todo-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
+.todo-form {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.todo-form h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-form h2 i {
+  color: var(--primary-color);
+}
+
+.todo-form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.todo-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.todo-form-group input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: var(--transition);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.todo-form-group i {
+  position: absolute;
+  left: 15px;
+  top: 38px; /* Adjusted to account for label */
+  color: var(--secondary-color);
+  transition: var(--transition);
+}
+
+.todo-form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(109, 93, 252, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.todo-form-group input:focus + i {
+  color: var(--primary-color);
+}
+
+.todo-submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.todo-submit-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.todo-list h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-list h2 i {
+  color: var(--primary-color);
+}
+
+.todo-list p {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+.todo-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.todo-list th {
+  text-align: left;
+  padding: 12px 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.todo-list td {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.todo-list tr:last-child td {
+  border-bottom: none;
+}
+
+.todo-list tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.todo-task {
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-task i {
+  color: var(--primary-color);
+}
+
+.todo-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.todo-status.pending {
+  background-color: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+.todo-status.complete {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-action-btn {
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.todo-complete-btn {
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+}
+
+.todo-complete-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.todo-delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+}
+
+.todo-delete-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .todo-container {
+    padding: 20px;
+  }
+
+  .todo-form,
+  .todo-list {
+    padding: 15px;
+  }
+
+  .todo-list th,
+  .todo-list td {
+    padding: 10px;
+  }
+
+  .todo-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .todo-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .todo-list table,
+  .todo-list thead,
+  .todo-list tbody,
+  .todo-list th,
+  .todo-list td,
+  .todo-list tr {
+    display: block;
+  }
+
+  .todo-list thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .todo-list tr {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+  }
+
+  .todo-list tr:last-child {
+    border-bottom: none;
+  }
+
+  .todo-list td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .todo-list td:last-child {
+    border-bottom: none;
+  }
+
+  .todo-list td:before {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .todo-list td:nth-of-type(1):before { content: "Task"; }
+  .todo-list td:nth-of-type(2):before { content: "Status"; }
+  .todo-list td:nth-of-type(3):before { content: "Actions"; }
+
+  .todo-task,
+  .todo-status,
+  .todo-actions {
+    justify-content: flex-end;
+  }
+}

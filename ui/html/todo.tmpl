@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/todo.css">
+</head>
+<body>
+    <div class="nav-container">
+        <h1>Todo List</h1>
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+                <li><a href="/journal"><i class="fas fa-book"></i> Journal</a></li>
+                <li><a href="/todos"><i class="fas fa-tasks"></i> Todo List</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="todo-container">
+        <h1>{{.HeaderText}}</h1>
+
+        <div class="todo-form">
+            <h2><i class="fas fa-plus-circle"></i> Add New Task</h2>
+            <form action="/todos" method="POST">
+                <div class="todo-form-group">
+                    <label for="task">Task Description</label>
+                    <input type="text" id="task" name="task" placeholder="What needs to be done?" value="{{index .FormData "task"}}"
+                           class="{{if .FormErrors.task}}invalid{{end}}">
+                    <i class="fas fa-clipboard-list"></i>
+                    {{with .FormErrors.task}}
+                        <div class="error">{{.}}</div>
+                    {{end}}
+                </div>
+                <button type="submit" class="todo-submit-btn"><i class="fas fa-plus"></i> Add Task</button>
+            </form>
+        </div>
+
+        <div class="todo-list">
+            <h2><i class="fas fa-list-check"></i> Your Tasks</h2>
+            {{if .Todos}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{range .Todos}}
+                    <tr>
+                        <td>
+                            <div class="todo-task">
+                                <i class="{{if .Completed}}fas fa-check-circle{{else}}far fa-circle{{end}}"></i>
+                                {{.Task}}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="todo-status {{if .Completed}}complete{{else}}pending{{end}}">
+                                {{if .Completed}}Complete{{else}}Pending{{end}}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="todo-actions">
+                                {{if not .Completed}}
+                                <form action="/todos/{{.ID}}/complete" method="POST">
+                                    <button type="submit" class="todo-action-btn todo-complete-btn">
+                                        <i class="fas fa-check"></i> Complete
+                                    </button>
+                                </form>
+                                {{end}}
+                                <form action="/todos/{{.ID}}/delete" method="POST">
+                                    <button type="submit" class="todo-action-btn todo-delete-btn">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+            {{else}}
+            <p><i class="fas fa-info-circle"></i> No tasks yet! Add your first task above.</p>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>
